@@ -15,4 +15,6 @@ gem 'spring',        group: :development
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.2'
   gem 'shoulda-matchers', '~> 2.6.1'
+  gem "capybara", "~> 2.4.1"
+  gem "letter_opener", "~> 1.1"
 end
