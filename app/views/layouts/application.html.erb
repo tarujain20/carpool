@@ -8,28 +8,34 @@
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="#">CommuteUp</a>
-  </div>
-  <div>
-    <ul class="nav navbar-nav">
-      <li><%= link_to "Home", root_path %></li>
-      <% if current_user %>
-          <li><%= link_to "#{current_user.full_name}", edit_user_registration_path %></li>
-          <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-      <% else %>
-          <li><%= link_to "Sign In", new_user_session_path %></li>
-    <% end %>
-    </ul>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "CommuteUp", root_path, class: "navbar-brand" %>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Home", root_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+            <li><%= link_to "#{current_user.full_name}", edit_user_registration_path %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
 
 <div class="container">
   <div class="row">
-
-    <div class="notice"><%= notice %></div>
-    <div class="alert"><%= alert %></div>
-
+    <% if notice %>
+        <div class="notice"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+        <div class="alert"><%= alert %></div>
+    <% end %>
     <div class="span12"><%= yield %></div>
   </div>
 </div>
