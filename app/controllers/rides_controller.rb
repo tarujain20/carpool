@@ -14,7 +14,7 @@ class RidesController < ApplicationController
   private
 
   def find_params
-    @origin = params[:origin]
-    @destination = params[:destination]
+    @origin = params[:ride][:origin]
+    @destination = params[:ride][:destination]
   end
 end

@@ -12,16 +12,17 @@ describe RidesController, :type => :controller do
   describe "index" do
     context "no date entered" do
       it "shows all available rides in future" do
-        get :index, :origin => "San Jose", :destination => "North Fork"
+        get :index, :ride => { :origin => "San Jose", :destination => "North Fork" }
 
         expect(response).to be_success
         expect(assigns(:rides).to_a).to eq([@ride1])
+        assert_select "div#available_rides"
       end
     end
 
     context "no origin entered" do
       it "shows all available rides in future going to the destination" do
-        get :index, :destination => "North Fork"
+        get :index, :ride => { :destination => "North Fork" }
 
         expect(response).to be_success
         expect(assigns(:rides).to_a).to eq([@ride1, @ride2])
