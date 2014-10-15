@@ -3,7 +3,7 @@ require 'rails_helper'
 describe RidesController, :type => :controller do
   before(:each) do
     @user = User.create!(:first_name => "Julia", :last_name => "R", :email => "juliar@example.com", :password => "password", :password_confirmation => "password")
-    # sign_in(@user)
+    sign_in(@user)
     @ride1 = RideOffer.create!(:origin => "San Jose", :destination => "North Fork", :total_seat => 1, :date => 1.day.from_now.to_date)
     @ride2 = RideOffer.create!(:origin => "San Francisco", :destination => "North Fork", :total_seat => 1, :date => 2.day.from_now.to_date)
     @ride3 = RideOffer.create!(:origin => "San Jose", :destination => "Kelseyville", :total_seat => 1, :date => 7.day.from_now.to_date)
