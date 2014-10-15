@@ -1,0 +1,2 @@
+class RideOffer < Ride
+end
