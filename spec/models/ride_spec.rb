@@ -4,5 +4,4 @@ describe Ride, :type => :model do
   it { should validate_presence_of(:origin) }
   it { should validate_presence_of(:destination) }
   it { should validate_presence_of(:total_seat) }
-  it { should validate_presence_of(:date) }
 end
