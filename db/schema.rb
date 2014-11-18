@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013193643) do
+ActiveRecord::Schema.define(version: 20141118201513) do
 
   create_table "addresses", force: true do |t|
     t.string   "address_1"
@@ -34,9 +34,13 @@ ActiveRecord::Schema.define(version: 20141013193643) do
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "business_name"
+    t.string   "business_email"
+    t.boolean  "verified_business_email", default: false, null: false
   end
 
   add_index "rides", ["destination"], name: "index_rides_on_destination"
+  add_index "rides", ["origin", "destination"], name: "index_rides_on_origin_and_destination"
   add_index "rides", ["origin"], name: "index_rides_on_origin"
 
   create_table "users", force: true do |t|

@@ -17,7 +17,6 @@ class RidesController < ApplicationController
 
   def create
     @ride = new_ride
-    @ride.date = 1.day.from_now.to_date
     if @ride.save
       redirect_to rides_url(:ride => {:destination => @ride.destination}), :notice => "Successfully added ride."
     else
@@ -34,7 +33,7 @@ class RidesController < ApplicationController
   end
 
   def ride_params
-    params.require(:ride).permit(:type, :origin, :destination, :total_seat, :date)
+    params.require(:ride).permit(:type, :origin, :destination, :total_seat, :business_name, :business_email)
   end
 
   def new_ride

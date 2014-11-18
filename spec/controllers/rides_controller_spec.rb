@@ -17,6 +17,7 @@ describe RidesController, :type => :controller do
         expect(response).to be_success
         expect(assigns(:rides).to_a).to eq([@ride1])
         assert_select "div#available_rides"
+        assert_select "tr#ride_#{@ride1.id}"
       end
     end
 
