@@ -1,28 +1,26 @@
-== README
+# Carpool
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project will help the community to find carpools to work easily!
 
-Things you may want to cover:
+Its deployed on heroku (simple version). I am still working on this slowly but steadly. Check it out:
+http://still-ocean-8434.herokuapp.com/
 
-* Ruby version
+### Prerequisites
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+git
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### Run the specs
+rake
+
+
+### Run the Application
+
+ The simplest way to start
+this server is:
+
+```
+rails s
+```
+
+Now browse to the app at `http://localhost:3000/`.
