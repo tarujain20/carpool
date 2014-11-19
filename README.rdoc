@@ -11,13 +11,16 @@ git
 
 
 ### Run the specs
-rake
 
+The simplest way to run all the specs:
+
+```
+rake (from the root dir)
+```
 
 ### Run the Application
 
- The simplest way to start
-this server is:
+ The simplest way to start this server is:
 
 ```
 rails s
