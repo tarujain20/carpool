@@ -21,7 +21,7 @@ class RidesController < ApplicationController
 
   def create
     @ride = new_ride
-    @ride.user = current_user
+    @ride.user_id = current_user.id
     if @ride.save
       redirect_to rides_url(:ride => {:destination => @ride.destination}), :notice => "Successfully added ride."
     else

@@ -49,9 +49,10 @@ describe RidesController, :type => :controller do
     context "Request a Ride" do
       it "creates new RideRequest" do
         expect do
-          post :create, :ride => {:type => "RideRequest", :origin => "San Jose", :destination => "Intel HQ", :total_seat => 1, :date => 2.day.from_now.to_date}
+          post :create, :ride => {:type => "RideRequest", :origin => "San Jose", :destination => "Santa Clara", :business_name => "Intel",
+                                  :business_email => "s@intel.com", :total_seat => 1, :date => 2.day.from_now.to_date}
         end.to change(RideRequest, :count).by(1)
-        expect(response).to redirect_to(rides_url(:ride => {:destination => "Intel HQ"}))
+        expect(response).to redirect_to(rides_url(:ride => {:destination => "Santa Clara"}))
       end
     end
 
