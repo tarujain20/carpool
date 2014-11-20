@@ -14,7 +14,9 @@
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li><%= link_to "Home", root_path %></li>
+        <% if current_user %>
+            <li><%= link_to "My Rides", rides_path %></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>

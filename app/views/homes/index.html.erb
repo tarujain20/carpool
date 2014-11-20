@@ -3,7 +3,7 @@
 </div>
 
 <div class="row center">
-  <%= form_for :ride, url: rides_url, method: :get do |form| %>
+  <%= form_for :ride, url: search_rides_url, method: :get do |form| %>
       <%= form.text_field :origin, placeholder: "Origin", class: "search-query" %>
       <%= form.text_field :destination, placeholder: "Destination", class: "search-query" %>
       <%= form.submit "Search", class: "btn btn-large btn-success" %>

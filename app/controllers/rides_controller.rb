@@ -2,6 +2,10 @@ class RidesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @rides = current_user.rides
+  end
+
+  def search
     find_params
     @rides = []
     if @origin.present? && @destination.present?
@@ -17,6 +21,7 @@ class RidesController < ApplicationController
 
   def create
     @ride = new_ride
+    @ride.user = current_user
     if @ride.save
       redirect_to rides_url(:ride => {:destination => @ride.destination}), :notice => "Successfully added ride."
     else
