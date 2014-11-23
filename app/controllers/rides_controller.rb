@@ -30,7 +30,30 @@ class RidesController < ApplicationController
     end
   end
 
+  def edit
+    find_models
+  end
+
+  def update
+    find_models
+    if @ride.update_attributes(ride_params)
+      redirect_to rides_url
+    else
+      render :action => "edit"
+    end
+  end
+
+  def destroy
+    find_models
+    @ride.destroy
+    redirect_to rides_url
+  end
+
   private
+
+  def find_models
+    @ride = Ride.where(:id => params[:id], :user_id => current_user.id).take
+  end
 
   def find_params
     @origin = params[:ride][:origin]

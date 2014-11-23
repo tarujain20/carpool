@@ -1,0 +1,26 @@
+<div>
+  <%= form.radio_button("type", "RideRequest") %> Request &nbsp;
+  <%= form.radio_button("type", "RideOffer") %> Offer
+</div>
+
+<div class="mt20">
+  <%= form.text_field :origin, placeholder: "Origin" %>
+</div>
+
+<div class="mt20">
+  <%= form.text_field :destination, placeholder: "Destination" %>
+</div>
+
+<div class="mt20">
+  <%= form.text_field :business_name, placeholder: "Company or Business Name" %>
+</div>
+
+<div class="mt20">
+  <%= form.text_field :business_email, placeholder: "Work Email" %>
+</div>
+
+<div class="mt20">
+  <%= form.text_field :total_seat, placeholder: "Total seat(s)" %>
+</div>
+<%= form.submit "Submit", class: "btn btn-large btn-success mt30" %>
+

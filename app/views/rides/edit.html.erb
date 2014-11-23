@@ -1,11 +1,10 @@
 <div id="new_ride" class="center">
-  <h1>New Ride</h1>
+  <h1>Edit Ride</h1>
 </div>
 
 
 <div class="center">
-  <%= form_for :ride, url: rides_url, method: :post do |form| %>
+  <%= form_for :ride, url: ride_url(@ride), method: :put do |form| %>
       <%= render :partial => "form", :object => form %>
   <% end %>
 </div>
-

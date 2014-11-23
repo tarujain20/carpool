@@ -72,4 +72,38 @@ describe RidesController, :type => :controller do
       expect(response).to render_template(:new)
     end
   end
+
+  describe "member actions" do
+    describe "edit" do
+      it "shows the edit form" do
+        get :edit, :id => @ride1.to_param
+        expect(response).to be_success
+        expect(assigns[:ride]).to eq(@ride1)
+        assert_select "form input#ride_origin"
+      end
+    end
+
+    describe "update" do
+      it "updates the ride" do
+        put :update, :id => @ride1.to_param, :ride => {:type => "RideOffer", :origin => "Fremont", :destination => "Santa Clara", :total_seat => 2}
+        expect(response).to redirect_to(rides_url)
+        expect(@ride1.reload.origin).to eq("Fremont")
+      end
+
+      it "shows form with errors" do
+        put :update, :id => @ride1.to_param, :ride => {:type => "RideOffer", :origin => "", :destination => "Santa Clara", :total_seat => 1}
+        expect(response).to render_template(:edit)
+      end
+    end
+
+    describe "destroy" do
+      it "deletes the procedure" do
+        expect do
+          delete :destroy, :id => @ride1.to_param
+        end.to change(RideOffer, :count).by(-1)
+        expect(response).to redirect_to(rides_url)
+      end
+    end
+
+  end
 end

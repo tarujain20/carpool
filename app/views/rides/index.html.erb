@@ -10,12 +10,39 @@
         <td class="bold">Company or Business</td>
         <td class="bold">Type</td>
         <td class="bold">Seat Available</td>
+        <td class="bold">Actions</td>
       </tr>
       </thead>
       <tbody>
-      <%= render partial: "ride", collection: @rides %>
+      <% @rides.each do |ride| %>
+          <tr id="ride_<%= ride.id %>">
+            <td>
+              <%= ride.origin %>
+            </td>
+            <td>
+              <%= ride.destination %>
+            </td>
+            <td>
+              <%= ride.business_name %> <br>
+              <%= ride.business_email %>
+              <% if ride.verified_business_email %>
+                  (Verified Work Email)
+              <% end %>
+            </td>
+            <td>
+              <%= ride.status %>
+            </td>
+            <td>
+              <%= ride.total_seat %>
+            </td>
+            <td>
+              <%= link_to "Edit", edit_ride_path(ride), :class => "btn btn-small btn-success" %>
+              <%= link_to "Delete", ride_path(ride), :method => :delete, data: {confirm: "Are you sure?"},
+                          :class => "btn btn-small btn-danger" %>
+            </td>
+          </tr>
+      <% end %>
       </tbody>
-
     </table>
   </div>
 </div>

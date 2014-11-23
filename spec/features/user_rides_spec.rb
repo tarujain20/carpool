@@ -53,6 +53,8 @@ describe "User Rides", :type => :feature do
         expect(page).to have_content(@ride1.business_name)
         expect(page).to have_content(@ride1.status)
         expect(page).to have_content(@ride1.total_seat)
+        expect(page).to have_content("Edit")
+        expect(page).to have_content("Delete")
       end
     end
   end
