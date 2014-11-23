@@ -2,7 +2,7 @@ class RidesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @rides = current_user.rides
+    @rides = current_user.rides.order("type")
   end
 
   def search
