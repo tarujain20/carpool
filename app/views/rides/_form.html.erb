@@ -4,11 +4,19 @@
 </div>
 
 <div class="mt20">
-  <%= form.text_field :origin, placeholder: "Origin" %>
+  <%= form.text_field :origin, placeholder: "Origin City" %>
+</div>
+
+<div class="mt20">
+  <%= form.text_field :origin_address, placeholder: "Origin Address", :class => "input-large" %>
 </div>
 
 <div class="mt20">
   <%= form.text_field :destination, placeholder: "Destination" %>
+</div>
+
+<div class="mt20">
+  <%= form.text_field :destination_address, placeholder: "Destination Address" , :class => "input-large" %>
 </div>
 
 <div class="mt20">
@@ -22,5 +30,6 @@
 <div class="mt20">
   <%= form.text_field :total_seat, placeholder: "Total seat(s)" %>
 </div>
+
 <%= form.submit "Submit", class: "btn btn-large btn-success mt30" %>
 

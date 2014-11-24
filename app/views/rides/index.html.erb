@@ -17,10 +17,12 @@
       <% @rides.each do |ride| %>
           <tr id="ride_<%= ride.id %>">
             <td>
-              <%= ride.origin %>
+              <%= ride.origin %> <br>
+              (<%= ride.origin_address %>)
             </td>
             <td>
-              <%= ride.destination %>
+              <%= ride.destination %> <br>
+              (<%= ride.destination_address %>)
             </td>
             <td>
               <%= ride.business_name %> <br>

@@ -8,6 +8,7 @@ describe "User Rides", :type => :feature do
   before(:each) do
     @user = User.create(:first_name => "Brad", :last_name => "Doe", :email => "test@example.com", :password => "password")
     @ride1 = RideOffer.create!(:origin => "San Jose", :destination => "Mountain View", :business_name => "Google", :business_email => "brad@google.com",
+                               :origin_address => "7101 Rainbow Dr, San Jose, CA 95129", :destination_address => "1600 Amphitheatre Parkway, Mountain View, CA 94043",
                                :total_seat => 1, :user => @user)
   end
 
@@ -25,6 +26,7 @@ describe "User Rides", :type => :feature do
       before(:each) do
         @user2 = User.create(:first_name => "Jen", :last_name => "Doe", :email => "test@example.com", :password => "password")
         @ride2 = RideOffer.create!(:origin => "San Jose", :destination => "Sunnyvale", :business_name => "Intel", :business_email => "jen@intel.com",
+                                   :origin_address => "7101 Mary Dr, San Jose, CA 95129", :destination_address => "1600 Some Parkway, Sunnyvale, CA",
                                    :total_seat => 1, :user => @user2)
 
         fill_in "ride_origin", :with => "San Jose"

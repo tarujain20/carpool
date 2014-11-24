@@ -39,6 +39,7 @@ class RidesController < ApplicationController
     if @ride.update_attributes(ride_params)
       redirect_to rides_url
     else
+      flash.now[:alert] = "#{@ride.errors.first.to_s}"
       render :action => "edit"
     end
   end
@@ -61,7 +62,7 @@ class RidesController < ApplicationController
   end
 
   def ride_params
-    params.require(:ride).permit(:type, :origin, :destination, :total_seat, :business_name, :business_email)
+    params.require(:ride).permit(:type, :origin, :destination, :total_seat, :business_name, :business_email, :origin_address, :destination_address)
   end
 
   def new_ride
