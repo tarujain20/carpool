@@ -12,7 +12,26 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :unless => :encrypted_password
   validates_confirmation_of :password
 
+  before_validation :force_email_lowercase
+  before_validation :strip_email_whitespace
+
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  private
+
+  def strip_email_whitespace
+    if self.email
+      email_no_whitespace = self.email.strip
+      self.email = email_no_whitespace
+    end
+  end
+
+  def force_email_lowercase
+    if self.email
+      email_downcase = self.email.downcase
+      self.email = email_downcase
+    end
   end
 end

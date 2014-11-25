@@ -32,7 +32,7 @@ describe "User Rides", :type => :feature do
         fill_in "ride_destination", :with => "Sunnyvale"
         fill_in "ride_destination_address", :with => "123 Some ln"
         fill_in "ride_business_name", :with => "Intel"
-        fill_in "ride_business_email", :with => "345 Some Dr"
+        fill_in "ride_business_email", :with => "s@somecompany.com"
         fill_in "ride_total_seat", :with => "1"
         click_button "Submit"
 
