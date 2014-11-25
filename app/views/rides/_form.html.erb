@@ -16,7 +16,7 @@
 </div>
 
 <div class="mt20">
-  <%= form.text_field :destination_address, placeholder: "Destination Address" , :class => "input-large" %>
+  <%= form.text_field :destination_address, placeholder: "Destination Address", :class => "input-large" %>
 </div>
 
 <div class="mt20">
@@ -25,6 +25,14 @@
 
 <div class="mt20">
   <%= form.text_field :business_email, placeholder: "Work Email" %>
+</div>
+
+<div class="mt20">
+  Commute days: <br>
+
+  <% ["M", "T", "W", "Th", "F"].each do |day| %>
+      <%= day %> <%= check_box_tag "commute_days[]", day, true, :id => "day_#{day}" %> &nbsp;
+  <% end %>
 </div>
 
 <div class="mt20">

@@ -14,9 +14,8 @@
     <% end %>
   </td>
   <td>
-    <%= ride.status %>
+    <%= ride.status %><br>
+    <%= pluralize(ride.total_seat, 'seat') %>
   </td>
-  <td>
-    <%= ride.total_seat %>
-  </td>
+  <td><%= ride.commute_days %></td>
 </tr>

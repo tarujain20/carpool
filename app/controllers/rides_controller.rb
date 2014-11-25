@@ -22,6 +22,7 @@ class RidesController < ApplicationController
   def create
     @ride = new_ride
     @ride.user_id = current_user.id
+    @ride.commute_days = commute_days
     if @ride.save
       redirect_to rides_url(:ride => {:destination => @ride.destination}), :notice => "Successfully added ride."
     else
@@ -36,6 +37,7 @@ class RidesController < ApplicationController
 
   def update
     find_models
+    @ride.commute_days = commute_days
     if @ride.update_attributes(ride_params)
       redirect_to rides_url
     else
@@ -71,6 +73,12 @@ class RidesController < ApplicationController
       @ride = RideOffer.new(ride_params)
     else
       @ride = RideRequest.new(ride_params)
+    end
+  end
+
+  def commute_days
+    if params[:commute_days].present?
+      params[:commute_days].join(" ")
     end
   end
 end

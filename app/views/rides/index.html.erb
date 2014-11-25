@@ -1,5 +1,5 @@
 <div id="available_rides" class="center">
-  <h1>Available Rides</h1>
+  <h1>My Rides</h1>
 
   <div id="rides">
     <table class="table table-striped table-condensed">
@@ -9,7 +9,7 @@
         <td class="bold">Destination</td>
         <td class="bold">Company or Business</td>
         <td class="bold">Type</td>
-        <td class="bold">Seat Available</td>
+        <td class="bold">Days and Time</td>
         <td class="bold">Actions</td>
       </tr>
       </thead>
@@ -32,11 +32,10 @@
               <% end %>
             </td>
             <td>
-              <%= ride.status %>
+              <%= ride.status %><br>
+              <%= pluralize(ride.total_seat, 'seat') %>
             </td>
-            <td>
-              <%= ride.total_seat %>
-            </td>
+            <td><%= ride.commute_days %></td>
             <td>
               <%= link_to "Edit", edit_ride_path(ride), :class => "btn btn-small btn-success" %>
               <%= link_to "Delete", ride_path(ride), :method => :delete, data: {confirm: "Are you sure?"},
