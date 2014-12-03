@@ -24,7 +24,7 @@ class RidesController < ApplicationController
     @ride.user_id = current_user.id
     @ride.commute_days = commute_days
     if @ride.save
-      redirect_to rides_url(:ride => {:destination => @ride.destination}), :notice => "Successfully added ride."
+      redirect_to rides_path, :notice => "Successfully added ride."
     else
       flash.now[:alert] = "#{@ride.errors.first}"
       render :action => :new

@@ -66,7 +66,7 @@ describe RidesController, :type => :controller do
                :commute_days => ["M", "W", "F"]
 
         end.to change(RideRequest, :count).by(1)
-        expect(response).to redirect_to(rides_url(:ride => {:destination => "Santa Clara"}))
+        expect(response).to redirect_to(rides_path)
       end
     end
 
@@ -81,7 +81,7 @@ describe RidesController, :type => :controller do
         end.to change(RideOffer, :count).by(1)
         ride = RideOffer.last
         expect(ride.commute_days).to eq("M W")
-        expect(response).to redirect_to(rides_url(:ride => {:destination => "Sunnyvale"}))
+        expect(response).to redirect_to(rides_path)
       end
     end
 
