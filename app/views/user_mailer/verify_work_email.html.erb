@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+
+<p>Hello <%= @first_name %>,</p>
+
+<p>Please verify your business or work email by clicking this link: <br>
+  <%= link_to "Verify Email", verify_rides_url(:id => @ride.to_param) %>
+</p>
+
+<p>
+  Verified work email will help you get more carpool options as other drivers/riders will get to know your business and
+  will feel safe carpooling with you.
+</p>
+
+<p class="mt30">
+  Thank you, <br>
+  CommuteUp Team
+</p>
+
+<p>P.S If you have any questions email us at support@commuteup.com</p>
+
+</body>
+</html>

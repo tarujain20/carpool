@@ -93,6 +93,17 @@ describe RidesController, :type => :controller do
     end
   end
 
+  describe "verify" do
+    it "sets the verified flag to true" do
+      expect(@ride1.verified_business_email).to eq(false)
+
+      get :verify, :id => @ride1.to_param
+      expect(response).to redirect_to(root_path)
+      expect(assigns[:ride]).to eq(@ride1)
+      expect(@ride1.reload.verified_business_email).to eq(true)
+    end
+  end
+
   describe "member actions" do
     describe "edit" do
       it "shows the edit form" do

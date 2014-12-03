@@ -52,6 +52,13 @@ class RidesController < ApplicationController
     redirect_to rides_url
   end
 
+  def verify
+    find_models
+    @ride.verified_business_email = true
+    @ride.save
+    redirect_to root_path
+  end
+
   private
 
   def find_models
