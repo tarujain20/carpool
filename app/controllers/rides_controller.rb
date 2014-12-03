@@ -24,7 +24,7 @@ class RidesController < ApplicationController
     @ride.user_id = current_user.id
     @ride.commute_days = commute_days
     if @ride.save
-      UserMailer.verify_work_email(@ride.id).deliver
+      # UserMailer.verify_work_email(@ride.id).deliver
       redirect_to rides_path, :notice => "Successfully added ride. Please check your work email and verify it."
     else
       flash.now[:alert] = "#{@ride.errors.first}"
