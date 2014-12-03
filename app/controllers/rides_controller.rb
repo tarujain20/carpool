@@ -24,7 +24,8 @@ class RidesController < ApplicationController
     @ride.user_id = current_user.id
     @ride.commute_days = commute_days
     if @ride.save
-      redirect_to rides_path, :notice => "Successfully added ride."
+      UserMailer.verify_work_email(@ride.id).deliver
+      redirect_to rides_path, :notice => "Successfully added ride. Please check your work email and verify it."
     else
       flash.now[:alert] = "#{@ride.errors.first}"
       render :action => :new
@@ -56,7 +57,7 @@ class RidesController < ApplicationController
     find_models
     @ride.verified_business_email = true
     @ride.save
-    redirect_to root_path
+    redirect_to rides_path, :notice => "Thank you for verifying your work email!"
   end
 
   private

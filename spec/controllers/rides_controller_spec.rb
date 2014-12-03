@@ -98,7 +98,7 @@ describe RidesController, :type => :controller do
       expect(@ride1.verified_business_email).to eq(false)
 
       get :verify, :id => @ride1.to_param
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(rides_path)
       expect(assigns[:ride]).to eq(@ride1)
       expect(@ride1.reload.verified_business_email).to eq(true)
     end

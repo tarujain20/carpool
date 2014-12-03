@@ -40,7 +40,7 @@ describe "User Rides", :type => :feature do
 
         click_button "Submit"
 
-        expect(page).to have_content("Successfully added ride.")
+        expect(page).to have_content("Successfully added ride. Please check your work email and verify it.")
       end
     end
 
