@@ -17,5 +17,8 @@
     <%= ride.status %><br>
     <%= pluralize(ride.total_seat, 'seat') %>
   </td>
-  <td><%= ride.commute_days %></td>
+  <td>
+    <%= ride.commute_days %> <br>
+    Leave: <%= ride.leave_at %> &nbsp; Return: <%= ride.return_at %>
+  </td>
 </tr>

@@ -12,4 +12,6 @@ describe Ride, :type => :model do
   it { should validate_presence_of(:business_name) }
   it { should validate_presence_of(:business_email) }
   it { should validate_presence_of(:commute_days) }
+  it { should validate_presence_of(:leave_at) }
+  it { should validate_presence_of(:return_at) }
 end

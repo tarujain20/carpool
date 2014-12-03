@@ -9,7 +9,7 @@ describe "User Rides", :type => :feature do
     @user = User.create(:first_name => "Brad", :last_name => "Doe", :email => "test@example.com", :password => "password")
     @ride1 = RideOffer.create!(:origin => "San Jose", :destination => "Mountain View", :business_name => "Google", :business_email => "brad@google.com",
                                :origin_address => "7101 Rainbow Dr, San Jose, CA 95129", :destination_address => "1600 Amphitheatre Parkway, Mountain View, CA 94043",
-                               :total_seat => 1, :user => @user, :commute_days => "MWF")
+                               :total_seat => 1, :user => @user, :commute_days => "MWF", :leave_at => "8:00 am", :return_at => "5:00 pm")
   end
 
   describe "existing user" do
@@ -33,7 +33,11 @@ describe "User Rides", :type => :feature do
         fill_in "ride_destination_address", :with => "123 Some ln"
         fill_in "ride_business_name", :with => "Intel"
         fill_in "ride_business_email", :with => "s@somecompany.com"
+        select '8:00 am', :from => 'ride_leave_at'
+        select '6:00 pm', :from => 'ride_return_at'
+
         fill_in "ride_total_seat", :with => "1"
+
         click_button "Submit"
 
         expect(page).to have_content("Successfully added ride.")
@@ -45,7 +49,7 @@ describe "User Rides", :type => :feature do
         @user2 = User.create(:first_name => "Jen", :last_name => "Doe", :email => "test@example.com", :password => "password")
         @ride2 = RideOffer.create!(:origin => "San Jose", :destination => "Sunnyvale", :business_name => "Intel", :business_email => "jen@intel.com",
                                    :origin_address => "7101 Mary Dr, San Jose, CA 95129", :destination_address => "1600 Some Parkway, Sunnyvale, CA",
-                                   :total_seat => 1, :user => @user2, :commute_days => "MWF")
+                                   :total_seat => 1, :user => @user2, :commute_days => "MWF", :leave_at => "8:00 am", :return_at => "5:00 pm")
 
         fill_in "ride_origin", :with => "San Jose"
         fill_in "ride_destination", :with => "Sunnyvale"
@@ -58,6 +62,9 @@ describe "User Rides", :type => :feature do
         expect(page).to have_content(@ride2.business_name)
         expect(page).to have_content(@ride2.status)
         expect(page).to have_content(@ride2.total_seat)
+        expect(page).to have_content(@ride2.commute_days)
+        expect(page).to have_content(@ride2.leave_at)
+        expect(page).to have_content(@ride2.return_at)
       end
 
       it "does NOT show business email of the person offering ride" do
@@ -72,6 +79,9 @@ describe "User Rides", :type => :feature do
         expect(page).to have_content(@ride1.destination)
         expect(page).to have_content(@ride1.business_name)
         expect(page).to have_content(@ride1.status)
+        expect(page).to have_content(@ride1.commute_days)
+        expect(page).to have_content(@ride1.leave_at)
+        expect(page).to have_content(@ride1.return_at)
         expect(page).to have_content(@ride1.total_seat)
         expect(page).to have_content("Edit")
         expect(page).to have_content("Delete")

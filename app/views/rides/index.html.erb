@@ -35,7 +35,10 @@
               <%= ride.status %><br>
               <%= pluralize(ride.total_seat, 'seat') %>
             </td>
-            <td><%= ride.commute_days %></td>
+            <td>
+              <%= ride.commute_days %> <br>
+              Leave: <%= ride.leave_at %> &nbsp; Return: <%= ride.return_at %>
+            </td>
             <td>
               <%= link_to "Edit", edit_ride_path(ride), :class => "btn btn-small btn-success" %>
               <%= link_to "Delete", ride_path(ride), :method => :delete, data: {confirm: "Are you sure?"},

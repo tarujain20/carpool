@@ -2,7 +2,7 @@ class Ride < ActiveRecord::Base
   belongs_to :user
 
   validates :origin, :destination, :total_seat, :user, :business_email, :business_name, :commute_days,
-            :origin_address, :destination_address, presence: true
+            :origin_address, :destination_address, :leave_at, :return_at, presence: true
   validates_format_of :business_email, :with => /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9.-]+\z/
 
   scope :search_by_origin_destination, lambda { |origin, destination| where("origin = ? AND destination = ?", origin, destination).order("destination") }

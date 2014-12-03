@@ -36,8 +36,20 @@
 </div>
 
 <div class="mt20">
+  Leave home:
+  <%= form.select("leave_at", options_for_select(leave_home_at), {include_blank: true}) %>
+</div>
+
+<div class="mt20">
+  Leave work:
+  <%= form.select("return_at", options_for_select(leave_work_at), {include_blank: true}) %>
+</div>
+
+<div class="mt20">
   <%= form.text_field :total_seat, placeholder: "Total seat(s)" %>
 </div>
+
+
 
 <%= form.submit "Submit", class: "btn btn-large btn-success mt30" %>
 

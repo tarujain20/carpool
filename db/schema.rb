@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124235250) do
+ActiveRecord::Schema.define(version: 20141202180200) do
 
   create_table "addresses", force: true do |t|
     t.string   "address_1"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20141124235250) do
     t.string   "origin_address"
     t.string   "destination_address"
     t.string   "commute_days"
+    t.string   "leave_at"
+    t.string   "return_at"
   end
 
   add_index "rides", ["destination"], name: "index_rides_on_destination"
