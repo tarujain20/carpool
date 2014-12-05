@@ -9,7 +9,8 @@
         <td class="bold">Destination</td>
         <td class="bold">Company or Business</td>
         <td class="bold">Type</td>
-        <td class="bold">Days and Time</td>
+        <td class="bold">Days</td>
+        <td class="bold">Time</td>
         <td class="bold">Actions</td>
       </tr>
       </thead>
@@ -18,26 +19,28 @@
           <tr id="ride_<%= ride.id %>">
             <td>
               <%= ride.origin %> <br>
-              (<%= ride.origin_address %>)
+              <%= ride.origin_address %>
             </td>
             <td>
               <%= ride.destination %> <br>
-              (<%= ride.destination_address %>)
             </td>
             <td>
-              <%= ride.business_name %> <br>
-              <%= ride.business_email %>
+              <%= ride.business_name %>&nbsp;(<%= ride.business_email %>) <br>
+              <%= ride.destination_address %>
+            </td>
+            <td>
+              <%= ride.status %>:&nbsp;<%= pluralize(ride.total_seat, 'seat') %>
+              <br>
               <% if ride.verified_business_email %>
-                  (Verified)
+                  (Verified Work Email)
               <% end %>
             </td>
             <td>
-              <%= ride.status %><br>
-              <%= pluralize(ride.total_seat, 'seat') %>
+              <%= ride.commute_days %>
             </td>
             <td>
-              <%= ride.commute_days %> <br>
-              Leave: <%= ride.leave_at %> &nbsp; Return: <%= ride.return_at %>
+              Leave : <%= ride.leave_at %> <br>
+              Return: <%= ride.return_at %>
             </td>
             <td>
               <%= link_to "Edit", edit_ride_path(ride), :class => "btn btn-small btn-success" %>

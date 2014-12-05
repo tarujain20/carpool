@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202180200) do
+ActiveRecord::Schema.define(version: 20141204033231) do
 
   create_table "addresses", force: true do |t|
     t.string   "address_1"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20141202180200) do
 
   add_index "addresses", ["city"], name: "index_addresses_on_city"
   add_index "addresses", ["state"], name: "index_addresses_on_state"
+
+  create_table "connections", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "ride_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "accept",     default: false, null: false
+  end
 
   create_table "rides", force: true do |t|
     t.string   "type"

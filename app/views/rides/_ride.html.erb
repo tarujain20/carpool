@@ -1,24 +1,30 @@
 <tr id="ride_<%= ride.id %>">
   <td>
     <%= ride.origin %> <br>
-    (<%= ride.origin_address %>)
+    <%= ride.origin_address %>
   </td>
   <td>
-    <%= ride.destination %> <br>
-    (<%= ride.destination_address %>)
+    <%= ride.destination %>
   </td>
   <td>
     <%= ride.business_name %> <br>
+    <%= ride.destination_address %>
+  </td>
+  <td>
+    <%= ride.status %>:&nbsp;<%= pluralize(ride.total_seat, 'seat') %>
+    <br>
     <% if ride.verified_business_email %>
         (Verified Work Email)
     <% end %>
   </td>
   <td>
-    <%= ride.status %><br>
-    <%= pluralize(ride.total_seat, 'seat') %>
+    <%= ride.commute_days %>
   </td>
   <td>
-    <%= ride.commute_days %> <br>
-    Leave: <%= ride.leave_at %> &nbsp; Return: <%= ride.return_at %>
+    Leave : <%= ride.leave_at %> <br>
+    Return: <%= ride.return_at %>
+  </td>
+  <td>
+    <%= link_to "Contact", "", :class => "btn btn-small btn-success" %> <br>
   </td>
 </tr>
