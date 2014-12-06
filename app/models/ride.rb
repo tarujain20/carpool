@@ -1,5 +1,6 @@
 class Ride < ActiveRecord::Base
   belongs_to :user
+  has_many :connections, :dependent => :destroy
 
   validates :origin, :destination, :total_seat, :user, :business_email, :business_name, :commute_days,
             :origin_address, :destination_address, :leave_at, :return_at, presence: true

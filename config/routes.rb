@@ -8,4 +8,6 @@ Rails.application.routes.draw do
       get 'verify'
     end
   end
+
+  resources 'connections'
 end

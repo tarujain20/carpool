@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe User, :type => :model do
   it { is_expected.to have_many(:rides).dependent(:destroy) }
+  it { is_expected.to have_many(:connections).dependent(:destroy) }
 
   it { should validate_presence_of(:first_name) }
   it { should validate_presence_of(:last_name) }

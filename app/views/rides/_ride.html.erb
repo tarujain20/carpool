@@ -25,6 +25,9 @@
     Return: <%= ride.return_at %>
   </td>
   <td>
-    <%= link_to "Contact", "", :class => "btn btn-small btn-success" %> <br>
+    <%= form_for :connection, url: connections_url, method: :post do |form| %>
+        <%= form.hidden_field(:ride_id, :value => ride.to_param) %>
+        <%= form.submit "Connect", class: "btn btn-large btn-success" %>
+    <% end %>
   </td>
 </tr>

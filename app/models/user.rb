@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :rides, :dependent => :destroy
+  has_many :connections, :dependent => :destroy
 
   validates_presence_of :first_name
   validates_presence_of :last_name
