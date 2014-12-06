@@ -32,9 +32,17 @@ Rails.application.configure do
   # Generate digests for assets URLs.
   config.assets.digest = true
 
-  # config.action_mailer.default_url_options = {:host => "commuteup.com"}
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = { :address => "" }
+  config.action_mailer.default_url_options = {:host => "commuteup.com"}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address: "smtp.mandrillapp.com",
+      port: 587,
+      enable_starttls_auto: true,
+      user_name: ENV["MANDRILL_USERNAME"],
+      password: ENV["MANDRILL_APIKEY"],
+      authentication: 'plain',
+      domain: 'commuteup.com'
+  }
 
   # `config.assets.precompile` has moved to config/initializers/assets.rb
 
