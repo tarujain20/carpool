@@ -41,7 +41,7 @@ Rails.application.configure do
       user_name: ENV["MANDRILL_USERNAME"],
       password: ENV["MANDRILL_APIKEY"],
       authentication: 'plain',
-      domain: 'commuteup.com'
+      domain: 'www.commuteup.com'
   }
 
   # `config.assets.precompile` has moved to config/initializers/assets.rb
