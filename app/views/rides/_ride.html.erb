@@ -25,9 +25,13 @@
     Return: <%= ride.return_at %>
   </td>
   <td>
-    <%= form_for :connection, url: connections_url, method: :post do |form| %>
-        <%= form.hidden_field(:ride_id, :value => ride.to_param) %>
-        <%= form.submit "Connect", class: "btn btn-large btn-success" %>
+    <% if current_user == ride.user %>
+        Your Request!
+    <% else %>
+        <%= form_for :connection, url: connections_url, method: :post do |form| %>
+            <%= form.hidden_field(:ride_id, :value => ride.to_param) %>
+            <%= form.submit "Connect", class: "btn btn-large btn-success" %>
+        <% end %>
     <% end %>
   </td>
 </tr>
