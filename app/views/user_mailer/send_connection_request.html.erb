@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+
+<p>Hello <%= @first_name %>,</p>
+
+<p>
+  You received a carpool request to <%= @ride.business_name %>. Please accept the request by clicking this link: <br>
+  <%= link_to "Accept request", "" %>
+</p>
+
+<p>
+  Once you accept the request the requester will be able to contact you via this email. We hope you accept soon!
+</p>
+
+<p class="mt30">
+  Thank you, <br>
+  CommuteUp Team
+</p>
+
+<p>P.S If you have any questions email us at support@commuteup.com</p>
+
+</body>
+</html>

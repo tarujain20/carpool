@@ -19,8 +19,43 @@ describe UserMailer, :type => :mailer do
       expect(@sent.to).to eq([@ride1.business_email])
       expect(@sent.subject).to eq("Verify your work email to find carpool via CommuteUp!")
       expect(@sent.body).to include(@user.first_name)
+    end
+  end
 
-      # expect(@sent.body).to include(%Q[<a href="#{signup_url(invitation, :host => 'test.host')}">])
+  context "connection emails" do
+    before(:each) do
+      @user2 = User.create!(:first_name => "Bob", :last_name => "R", :email => "bob@example.com", :password => "password", :password_confirmation => "password")
+      @ride2 = RideRequest.create!(:origin => "San Francisco", :destination => "Mountain View", :business_name => "Google", :business_email => "bob@google.com",
+                                   :origin_address => "7101 Main Dr, San Francisco, CA", :destination_address => "1600 Amphitheatre Parkway, Mountain View, CA 94043",
+                                   :total_seat => 1, :user => @user2, :commute_days => "MTWThF", :leave_at => "8:00 am", :return_at => "5:00 pm")
+      @connection = Connection.create!(:user_id => @user.id, :ride_id => @ride2.id)
+    end
+
+    describe "send_connection_request" do
+      it "sends link to verify work email" do
+        expect {
+          @sent = UserMailer.send_connection_request(@ride2.id).deliver
+        }.to change(ActionMailer::Base.deliveries, :length).by(1)
+
+        expect(@sent.from).to eq(["support@commuteup.com"])
+        expect(@sent.to).to eq([@ride2.business_email])
+        expect(@sent.subject).to eq("Carpool request via CommuteUp!")
+        expect(@sent.body).to include(@user2.first_name)
+      end
+    end
+
+
+    describe "send_connection_request_receipt" do
+      it "sends link to verify work email" do
+        expect {
+          @sent = UserMailer.send_connection_request_receipt(@ride2.id, @user.id).deliver
+        }.to change(ActionMailer::Base.deliveries, :length).by(1)
+
+        expect(@sent.from).to eq(["support@commuteup.com"])
+        expect(@sent.to).to eq([@user.email])
+        expect(@sent.subject).to eq("Receipt of carpool request via CommuteUp!")
+        expect(@sent.body).to include(@user.first_name)
+      end
     end
   end
 end

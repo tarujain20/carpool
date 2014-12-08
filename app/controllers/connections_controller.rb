@@ -9,9 +9,7 @@ class ConnectionsController < ApplicationController
     @connection = Connection.new(connection_params)
     @connection.user_id = current_user.id
     if @connection.save
-      # UserMailer.send_connection_request(@ride.user.id).deliver
-      # UserMailer.send_connection_request_receipt(current_user.id).deliver
-      redirect_to connections_path, :notice => "Successfully added connection request."
+        redirect_to connections_path, :notice => "Successfully added connection request."
     else
       redirect_to root_path, :notice => "#{@connection.errors.first}"
     end
