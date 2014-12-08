@@ -33,4 +33,17 @@ describe ConnectionsController, :type => :controller do
       expect(assigns[:connection].user_id).to eq @user.id
     end
   end
+
+  describe "accept" do
+    it "sets the accept flag to true" do
+      @connection = Connection.create!(:user_id => @user.id, :ride_id => @ride2.id)
+
+      expect(@connection.accept).to eq(false)
+
+      get :accept, :id => @connection.to_param
+      expect(response).to redirect_to(root_path)
+      expect(assigns[:connection]).to eq(@connection)
+      expect(@connection.reload.accept).to eq(true)
+    end
+  end
 end

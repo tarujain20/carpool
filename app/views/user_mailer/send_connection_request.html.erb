@@ -9,11 +9,12 @@
 
 <p>
   You received a carpool request to <%= @ride.business_name %>. Please accept the request by clicking this link: <br>
-  <%= link_to "Accept request", "" %>
+  <%= link_to "Accept request", accept_connections_url(:id => @connection.to_param), :class => "btn btn-small btn-success" %>
 </p>
 
 <p>
-  Once you accept the request the requester will be able to contact you via this email. We hope you accept soon!
+  Once you accept the request the requester will be able to contact you via this email. We hope you accept soon and
+  start carpooling!
 </p>
 
 <p class="mt30">

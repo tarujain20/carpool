@@ -6,7 +6,9 @@ class UserMailer < ActionMailer::Base
     mail(:to => @business_email, :subject => "Verify your work email to find carpool via CommuteUp!")
   end
 
-  def send_connection_request(ride_id)
+  def send_connection_request(connection_id)
+    @connection = Connection.where(:id => connection_id).take
+    ride_id = @connection.ride_id
     find_models(ride_id)
     mail(:to => @business_email, :cc => @user.email, :subject => "Carpool request via CommuteUp!")
   end

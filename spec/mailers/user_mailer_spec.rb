@@ -34,7 +34,7 @@ describe UserMailer, :type => :mailer do
     describe "send_connection_request" do
       it "sends link to verify work email" do
         expect {
-          @sent = UserMailer.send_connection_request(@ride2.id).deliver
+          @sent = UserMailer.send_connection_request(@connection.id).deliver
         }.to change(ActionMailer::Base.deliveries, :length).by(1)
 
         expect(@sent.from).to eq(["support@commuteup.com"])

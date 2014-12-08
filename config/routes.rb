@@ -9,5 +9,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources 'connections'
+  resources 'connections', :only => %w[index create] do
+    collection do
+      get 'accept'
+    end
+  end
 end

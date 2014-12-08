@@ -15,6 +15,19 @@ class ConnectionsController < ApplicationController
     end
   end
 
+  def accept
+    find_models
+    @connection.accept = true
+    @connection.save
+    redirect_to root_path, :notice => "Thank you for accepting carpool request!"
+  end
+
+  private
+
+  def find_models
+    @connection = Connection.where(:id => params[:id]).take
+  end
+
   def connection_params
     params.require(:connection).permit(:ride_id)
   end

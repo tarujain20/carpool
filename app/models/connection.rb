@@ -13,7 +13,7 @@ class Connection < ActiveRecord::Base
   end
 
   def send_emails
-    UserMailer.send_connection_request(self.ride_id).deliver
+    UserMailer.send_connection_request(self.id).deliver
     UserMailer.send_connection_request_receipt(self.ride_id, user_id).deliver
   end
 end
